@@ -1,19 +1,18 @@
-// const fs = require('fs/promises')
+const fs = require("fs/promises");
+const { contactsPath } = require("../helpers");
 
-const listContacts = async () => {}
+const listContacts = async () => {
+  const data = await fs.readFile(contactsPath, "utf8");
 
-const getContactById = async (contactId) => {}
+  return JSON.parse(data);
+};
 
-const removeContact = async (contactId) => {}
+const getContactById = async (contactId) => {
+  const contacts = await listContacts();
 
-const addContact = async (body) => {}
+  const contactsById = contacts.filter(({ id }) => id === contactId);
 
-const updateContact = async (contactId, body) => {}
+  return contactsById;
+};
 
-module.exports = {
-  listContacts,
-  getContactById,
-  removeContact,
-  addContact,
-  updateContact,
-}
+module.exports = { listContacts, getContactById };
