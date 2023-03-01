@@ -5,12 +5,11 @@ const connectMongo = async () => {
   mongoose.set("strictQuery", false);
 
   const uri = getConnectionURI();
-  console.log("uri", uri);
 
   return (
     mongoose.connect(uri),
     {
-      useNewUrlParser: true,
+      // promiseLibrary: global.Promise,
       useUnifiedTopology: true,
     }
   );

@@ -4,11 +4,11 @@ const router = express.Router();
 
 const {
   getContactsListController,
-
   getContactByIdController,
   createContactController,
   removeContactController,
   updateContactController,
+  updateStatusContactController,
 } = require("../../controllers");
 
 const { asyncWrapper } = require("../../helpers");
@@ -23,6 +23,9 @@ router.delete("/:contactId", asyncWrapper(removeContactController));
 
 router.put("/:contactId", asyncWrapper(updateContactController));
 
-router.patch("/:contactId/status", asyncWrapper());
+router.patch(
+  "/:contactId/favorite",
+  asyncWrapper(updateStatusContactController)
+);
 
 module.exports = router;
