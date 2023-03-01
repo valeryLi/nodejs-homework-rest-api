@@ -3,25 +3,25 @@ const express = require("express");
 const router = express.Router();
 
 const {
-  getContactsList,
+  getContactsListController,
 
-  getContactById,
-  createContact,
-  removeContactCtrl,
-  updateContactCtrl,
+  getContactByIdController,
+  createContactController,
+  removeContactController,
+  updateContactController,
 } = require("../../controllers");
 
 const { asyncWrapper } = require("../../helpers");
 
-router.get("/", asyncWrapper(getContactsList));
+router.get("/", asyncWrapper(getContactsListController));
 
-router.get("/:contactId", asyncWrapper(getContactById));
+router.get("/:contactId", asyncWrapper(getContactByIdController));
 
-router.post("/", asyncWrapper(createContact));
+router.post("/", asyncWrapper(createContactController));
 
-router.delete("/:contactId", asyncWrapper(removeContactCtrl));
+router.delete("/:contactId", asyncWrapper(removeContactController));
 
-router.put("/:contactId", asyncWrapper(updateContactCtrl));
+router.put("/:contactId", asyncWrapper(updateContactController));
 
 router.patch("/:contactId/status", asyncWrapper());
 
