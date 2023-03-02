@@ -13,15 +13,19 @@ const addContact = async (body) => {
 };
 
 const removeContact = async (contactId) => {
-  return Contacts.findByIdAndDelete({ _id: contactId });
+  return await Contacts.findByIdAndDelete({ _id: contactId });
 };
 
 const updateContact = async (contactId, body) => {
-  return Contacts.findByIdAndUpdate({ _id: contactId }, body, { new: true });
+  return await Contacts.findByIdAndUpdate({ _id: contactId }, body, {
+    new: true,
+  });
 };
 
 const updateStatusContact = async (contactId, body) => {
-  return Contacts.findByIdAndUpdate({ _id: contactId }, body, { new: true });
+  return await Contacts.findByIdAndUpdate({ _id: contactId }, body, {
+    new: true,
+  });
 };
 
 module.exports = {

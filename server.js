@@ -5,11 +5,6 @@ const { connectMongo } = require("./db");
 
 const PORT = process.env.PORT || 3000;
 
-// app.listen(PORT, async () => {
-//   await connectMongo();
-
-//   console.log("Database connection successful");
-// });
 connectMongo()
   .then(
     app.listen(PORT, () => {

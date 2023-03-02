@@ -1,17 +1,18 @@
 const { updateContact } = require("../services");
+const { isEmpty } = require("../helpers");
 const contactValidator = require("../middleware/validator");
 
 const updateContactController = async (req, res) => {
   const { contactId } = req.params;
   const body = req.body;
-  const isEmpty = Object.keys(body);
+
   const { error } = contactValidator.validate(req.body);
 
   if (error) {
     return res.status(400).json({ message: error.details[0].message });
   }
 
-  if (isEmpty.length === 0) {
+  if (isEmpty(body)) {
     return res.status(400).json({ message: "missing fields" });
   }
 

@@ -1,9 +1,9 @@
 const { removeContact } = require("../services");
 
 const removeContactController = async (req, res) => {
-  const { contactId: id } = req.params;
+  const { contactId } = req.params;
 
-  const contactToRemove = await removeContact(id);
+  const contactToRemove = await removeContact(contactId);
 
   if (!contactToRemove) {
     return res.status(404).json({ message: "Not found" });
