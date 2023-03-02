@@ -1,14 +1,19 @@
-const path = require("path");
-const contactsPath = path.join(__dirname, "..", "db", "contacts.json");
-
 const asyncWrapper = (controller) => {
   return (req, res, next) => {
-    try {
-      controller(req, res);
-    } catch (err) {
-      next(err);
-    }
+    controller(req, res).catch(next);
   };
 };
 
-module.exports = { asyncWrapper, contactsPath };
+const errorHandler = (error, req, res, next) => {
+  res.status(500).json({ message: error.message });
+};
+
+const isEmpty = (obj) => {
+  return Object.keys(obj).length === 0;
+};
+
+module.exports = {
+  asyncWrapper,
+  errorHandler,
+  isEmpty,
+};
