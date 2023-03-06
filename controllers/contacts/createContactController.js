@@ -1,6 +1,6 @@
-const { addContact } = require("../services");
+const { addContact } = require("../../services");
 
-const contactValidator = require("../middleware/validator");
+const contactValidator = require("../../middleware");
 
 const createContactController = async (req, res) => {
   const { error } = contactValidator.validate(req.body);

@@ -1,11 +1,16 @@
-const getContactsListController = require("./getContactsListController");
-const getContactByIdController = require("./getContactByIdController");
-const createContactController = require("./createContactController");
-const removeContactController = require("./removeContactsController");
-const updateContactController = require("./updateContactController");
-const updateStatusContactController = require("./updateStatusContactController");
+const {
+  getContactsListController,
+  getContactByIdController,
+  createContactController,
+  removeContactController,
+  updateContactController,
+  updateStatusContactController,
+} = require("./contacts");
+
+const { register } = require("./auth");
 
 module.exports = {
+  register,
   getContactsListController,
   getContactByIdController,
   createContactController,

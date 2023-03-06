@@ -1,6 +1,6 @@
-const { updateStatusContact } = require("../services");
-const { isEmpty } = require("../helpers");
-const contactValidator = require("../middleware/validator");
+const { updateStatusContact } = require("../../services");
+const { isEmpty } = require("../../helpers");
+const contactValidator = require("../../middleware");
 
 const updateStatusContactController = async (req, res) => {
   const { contactId } = req.params;
