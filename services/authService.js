@@ -5,7 +5,12 @@ const checkUserDB = async (email) => {
 };
 
 const addNewUser = async (body) => {
-  return await User.create(body);
+  const { email, password } = body;
+
+  const newUser = new User({ email, password });
+  newUser.setPassword(password);
+
+  return await newUser.save();
 };
 
 module.exports = {

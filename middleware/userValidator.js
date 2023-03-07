@@ -1,7 +1,7 @@
 const Joi = require("joi");
 
 const userValidator = Joi.object({
-  email: Joi.string().email().required().trim(),
+  email: Joi.string().required().email().trim(),
 
   password: Joi.string()
     .required()
