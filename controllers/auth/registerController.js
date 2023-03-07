@@ -1,6 +1,6 @@
 const { checkUserDB, addNewUser } = require("../../services");
 
-const { userValidator } = require("../../middleware/userValidator");
+const { userValidator } = require("../../middleware");
 
 const registerController = async (req, res) => {
   const { error } = userValidator.validate(req.body);
@@ -27,3 +27,5 @@ const registerController = async (req, res) => {
 };
 
 module.exports = registerController;
+
+// awertgfdsa1789

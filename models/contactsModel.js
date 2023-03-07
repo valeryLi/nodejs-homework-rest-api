@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Schema = require("mongoose");
 
 const contactsSchema = new mongoose.Schema(
   {
@@ -22,7 +23,7 @@ const contactsSchema = new mongoose.Schema(
       default: false,
     },
     owner: {
-      type: mongoose.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "user",
     },
   },
