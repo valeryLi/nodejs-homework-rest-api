@@ -30,6 +30,10 @@ userSchema.methods.setPassword = function (password) {
   this.password = bCrypt.hashSync(password, bCrypt.genSaltSync(10));
 };
 
+userSchema.methods.validPassword = function (password) {
+  return bCrypt.compareSync(password, this.password);
+};
+
 const User = mongoose.model("user", userSchema);
 
 module.exports = User;

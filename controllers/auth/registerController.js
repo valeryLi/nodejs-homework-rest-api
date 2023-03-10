@@ -1,6 +1,7 @@
 const { checkUserDB, addNewUser } = require("../../services");
 
 const { userValidator } = require("../../middleware");
+const { RequestError } = require("../../helpers");
 
 const registerController = async (req, res) => {
   const { error } = userValidator.validate(req.body);
@@ -9,11 +10,11 @@ const registerController = async (req, res) => {
   const userExist = await checkUserDB(email);
 
   if (error) {
-    return res.status(400).json({ message: error.details[0].message });
+    throw RequestError(400, error.details[0].message);
   }
 
   if (userExist) {
-    return res.status(409).json({ message: "Emale in use" });
+    throw RequestError(409, "Emale in use");
   }
   const register = await addNewUser({ email, password });
 

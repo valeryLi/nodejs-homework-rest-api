@@ -1,24 +1,29 @@
 const { updateStatusContact } = require("../../services");
-const { isEmpty } = require("../../helpers");
+const { isEmpty, RequestError } = require("../../helpers");
 const contactValidator = require("../../middleware");
 
 const updateStatusContactController = async (req, res) => {
   const { contactId } = req.params;
+  const { _id: owner } = req.user;
   const body = req.body;
   const { error } = contactValidator.validate(req.body);
 
   if (error) {
-    return res.status(400).json({ message: error.details[0].message });
+    throw RequestError(400, error.details[0].message);
   }
 
   if (isEmpty(body)) {
-    return res.status(400).json({ message: "missing fields" });
+    throw RequestError(400, "missing fields");
   }
 
-  const contactStatusToUpdate = await updateStatusContact(contactId, body);
+  const contactStatusToUpdate = await updateStatusContact(
+    contactId,
+    body,
+    owner
+  );
 
   if (!contactStatusToUpdate) {
-    return res.status(404).json({ message: "Not found" });
+    throw RequestError(404, "Not found");
   }
 
   return res.status(200).json(contactStatusToUpdate);
