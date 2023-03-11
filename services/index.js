@@ -12,6 +12,7 @@ const {
   addNewUser,
   findUserById,
   updateUser,
+  removeToken,
 } = require("./authService");
 
 module.exports = {
@@ -19,6 +20,7 @@ module.exports = {
   addNewUser,
   findUserById,
   updateUser,
+  removeToken,
   listContacts,
   getContactById,
   addContact,

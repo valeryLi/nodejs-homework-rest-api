@@ -1,11 +1,12 @@
 const { updateStatusContact } = require("../../services");
 const { isEmpty, RequestError } = require("../../helpers");
-const contactValidator = require("../../middleware");
+const { contactValidator } = require("../../middleware");
 
 const updateStatusContactController = async (req, res) => {
   const { contactId } = req.params;
   const { _id: owner } = req.user;
   const body = req.body;
+
   const { error } = contactValidator.validate(req.body);
 
   if (error) {

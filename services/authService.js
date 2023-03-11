@@ -18,9 +18,19 @@ const findUserById = async (id) => {
 };
 
 const updateUser = async (id, data) => {
-  return User.findByIdAndUpdate({ _id: id }, data, {
+  return await User.findByIdAndUpdate({ _id: id }, data, {
     new: true,
   });
+};
+
+const removeToken = async (id) => {
+  return await User.findByIdAndUpdate(
+    id,
+    { token: null },
+    {
+      new: true,
+    }
+  );
 };
 
 module.exports = {
@@ -28,4 +38,5 @@ module.exports = {
   addNewUser,
   findUserById,
   updateUser,
+  removeToken,
 };

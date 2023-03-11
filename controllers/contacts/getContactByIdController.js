@@ -4,6 +4,7 @@ const { RequestError } = require("../../helpers");
 const getContactByIdController = async (req, res) => {
   const { _id: owner } = req.user;
   const { contactId } = req.params;
+
   const contact = await getContactById(contactId, owner);
 
   if (!contact || contact.length < 1) {
