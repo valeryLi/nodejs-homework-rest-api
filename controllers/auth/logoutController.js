@@ -1,12 +1,13 @@
 const { removeToken } = require("../../services");
 
 const logoutController = async (req, res) => {
-  const { _id } = req.user;
-  await removeToken(_id);
+  const { id } = req.user;
+
+  await removeToken(id);
 
   return res.status(204).json({
-    message: "Logout success",
+    data: "Logout success",
   });
 };
 
-module.export = logoutController;
+module.exports = logoutController;

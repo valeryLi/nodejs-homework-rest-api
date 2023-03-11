@@ -25,7 +25,7 @@ const updateUser = async (id, data) => {
 
 const removeToken = async (id) => {
   return await User.findByIdAndUpdate(
-    id,
+    { _id: id },
     { token: null },
     {
       new: true,
