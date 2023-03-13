@@ -13,18 +13,25 @@ const {
 
 const { asyncWrapper } = require("../../helpers");
 
-router.get("/", asyncWrapper(getContactsListController));
+const { authenticate } = require("../../middleware");
 
-router.get("/:contactId", asyncWrapper(getContactByIdController));
+router.get("/", authenticate, asyncWrapper(getContactsListController));
 
-router.post("/", asyncWrapper(createContactController));
+router.get("/:contactId", authenticate, asyncWrapper(getContactByIdController));
 
-router.delete("/:contactId", asyncWrapper(removeContactController));
+router.post("/", authenticate, asyncWrapper(createContactController));
 
-router.put("/:contactId", asyncWrapper(updateContactController));
+router.delete(
+  "/:contactId",
+  authenticate,
+  asyncWrapper(removeContactController)
+);
+
+router.put("/:contactId", authenticate, asyncWrapper(updateContactController));
 
 router.patch(
   "/:contactId/favorite",
+  authenticate,
   asyncWrapper(updateStatusContactController)
 );
 

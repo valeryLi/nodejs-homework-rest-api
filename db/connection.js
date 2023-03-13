@@ -9,7 +9,7 @@ const connectMongo = async () => {
   return (
     mongoose.connect(uri),
     {
-      // promiseLibrary: global.Promise,
+      promiseLibrary: global.Promise,
       useUnifiedTopology: true,
     }
   );
