@@ -25,7 +25,7 @@ const loginController = async (req, res) => {
     id: user._id,
   };
 
-  const { subscription } = user;
+  const { subscription, avatarURL } = user;
 
   const token = jwt.sign(payload, SECRET_KEY, { expiresIn: "24h" });
 
@@ -36,6 +36,7 @@ const loginController = async (req, res) => {
     user: {
       email,
       subscription,
+      avatarURL,
     },
   });
 };

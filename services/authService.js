@@ -7,7 +7,8 @@ const checkUserDB = async (email) => {
 const addNewUser = async (body) => {
   const { email, password } = body;
 
-  const newUser = new User({ email, password });
+  const newUser = new User({ email });
+  newUser.avatarGenerator(email);
   newUser.setPassword(password);
 
   return await newUser.save();
