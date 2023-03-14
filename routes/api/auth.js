@@ -9,6 +9,7 @@ const {
 
 const { asyncWrapper } = require("../../helpers");
 const { authenticate } = require("../../middleware");
+const { upload } = require("../../middleware");
 
 const router = express.Router();
 
@@ -21,5 +22,6 @@ router.patch(
   authenticate,
   asyncWrapper(subscriptionController)
 );
+router.patch("/avatars", authenticate, upload.single("avatar"), asyncWrapper());
 
 module.exports = router;

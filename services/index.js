@@ -21,6 +21,7 @@ module.exports = {
   findUserById,
   updateUser,
   removeToken,
+
   listContacts,
   getContactById,
   addContact,
