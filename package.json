@@ -10,6 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "5": "^0.0.1",
     "@jest-mock/express": "^2.0.1",
     "bcryptjs": "^2.4.3",
     "cors": "2.8.5",
@@ -20,7 +21,7 @@
     "jimp": "^0.22.7",
     "joi": "^17.8.3",
     "jsonwebtoken": "^9.0.0",
-    "mongodb-memory-server": "^8.12.1",
+    "mongodb-memory-server": "^5.0.0",
     "mongoose": "^7.0.0",
     "morgan": "1.10.0",
     "multer": "^1.4.5-lts.1",
