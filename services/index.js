@@ -15,6 +15,8 @@ const {
   removeToken,
 } = require("./authService");
 
+const { sendEmail } = require("./email");
+
 module.exports = {
   checkUserDB,
   addNewUser,
@@ -28,4 +30,6 @@ module.exports = {
   removeContact,
   updateContact,
   updateStatusContact,
+
+  sendEmail,
 };

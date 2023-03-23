@@ -6,6 +6,7 @@ const {
   logoutController,
   subscriptionController,
   updateAvatarController,
+  verificationController,
 } = require("../../controllers");
 
 const { asyncWrapper } = require("../../helpers");
@@ -28,5 +29,7 @@ router.patch(
   upload.single("avatar"),
   asyncWrapper(updateAvatarController)
 );
+
+router.get("/verify/:verificationToken", asyncWrapper(verificationController));
 
 module.exports = router;

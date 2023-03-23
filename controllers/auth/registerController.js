@@ -1,3 +1,4 @@
+const { v4: uuidv4 } = require("uuid");
 const { checkUserDB, addNewUser } = require("../../services");
 
 const { userValidator } = require("../../middleware");
@@ -8,6 +9,7 @@ const registerController = async (req, res) => {
   const { email, password } = req.body;
 
   const userExist = await checkUserDB(email);
+  const verificationToken = uuidv4();
 
   if (error) {
     throw RequestError(400, error.details[0].message);
