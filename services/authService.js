@@ -4,10 +4,14 @@ const checkUserDB = async (email) => {
   return await User.findOne({ email });
 };
 
-const addNewUser = async (body) => {
-  const { email, password } = body;
+const findUserToVerify = async (verificationToken) => {
+  return await User.findOne({ verificationToken });
+};
 
-  const newUser = new User({ email });
+const addNewUser = async (body) => {
+  const { email, password, verificationToken } = body;
+
+  const newUser = new User({ email, verificationToken });
   newUser.avatarGenerator(email);
   newUser.setPassword(password);
 
@@ -36,6 +40,7 @@ const removeToken = async (id) => {
 
 module.exports = {
   checkUserDB,
+  findUserToVerify,
   addNewUser,
   findUserById,
   updateUser,

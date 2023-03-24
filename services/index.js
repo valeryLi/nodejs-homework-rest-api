@@ -9,16 +9,18 @@ const {
 
 const {
   checkUserDB,
+  findUserToVerify,
   addNewUser,
   findUserById,
   updateUser,
   removeToken,
 } = require("./authService");
 
-const { sendEmail } = require("./email");
+const { sendEmail, verifyEmail } = require("./email");
 
 module.exports = {
   checkUserDB,
+  findUserToVerify,
   addNewUser,
   findUserById,
   updateUser,
@@ -32,4 +34,5 @@ module.exports = {
   updateStatusContact,
 
   sendEmail,
+  verifyEmail,
 };

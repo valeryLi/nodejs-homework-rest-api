@@ -17,7 +17,7 @@ const loginController = async (req, res) => {
 
   const user = await checkUserDB(email, password);
 
-  if (!user || !user.validPassword(password)) {
+  if (!user || !user.validPassword(password) || !user.verify) {
     throw RequestError(401, "Email or password is wrong");
   }
 
