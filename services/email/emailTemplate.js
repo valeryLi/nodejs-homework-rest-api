@@ -6,7 +6,7 @@ const verifyEmail = (email, token) => {
   return {
     to: email,
     subject: "Email verification",
-    html: `<a href="${BASE_URL}/api/auth/verify/${token}>Please click here to verify your email address</>`,
+    html: `<a target="_blank" href="${BASE_URL}/api/auth/verify/${token}>Please click here to verify your email address</>`,
   };
 };
 
