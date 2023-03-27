@@ -27,9 +27,7 @@ const repeatVerificationController = async (req, res) => {
 
   await sendEmail(mail);
 
-  return res
-    .status(200)
-    .json({ message: "Verification has already been passed" });
+  return res.status(200).json({ message: "Verification email sent" });
 };
 
 module.exports = repeatVerificationController;
