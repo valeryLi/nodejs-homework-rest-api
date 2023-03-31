@@ -11,4 +11,11 @@ const userValidator = Joi.object({
     .pattern(/^[a-zA-Z0-9]{3,30}$/),
 });
 
-module.exports = userValidator;
+const userEmailVerify = Joi.object({
+  email: Joi.string().required().email().trim(),
+});
+
+module.exports = {
+  userValidator,
+  userEmailVerify,
+};

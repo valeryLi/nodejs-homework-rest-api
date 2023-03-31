@@ -1,5 +1,7 @@
 require("dotenv").config();
 
+const bCrypt = require("bcryptjs");
+
 const { checkUserDB, updateUser } = require("../../services");
 const { userValidator } = require("../../middleware");
 const { RequestError } = require("../../helpers");
@@ -17,7 +19,16 @@ const loginController = async (req, res) => {
 
   const user = await checkUserDB(email, password);
 
-  if (!user || !user.validPassword(password)) {
+  if (!user) {
+    throw RequestError(401, "Email or password is wrong");
+  }
+
+  if (!user.verify) {
+    throw RequestError(401, "First, verify your email address");
+  }
+
+  const passwordCompare = await bCrypt.compareSync(password, user.password);
+  if (!passwordCompare) {
     throw RequestError(401, "Email or password is wrong");
   }
 
